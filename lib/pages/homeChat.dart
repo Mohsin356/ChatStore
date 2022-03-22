@@ -20,10 +20,7 @@ class _ChatHomeState extends State<ChatHome> {
             color: Colors.white,
           ),
         ),
-        body: Container(
-          padding: const EdgeInsets.only(top: 10),
-          child: const ListConversations(),
-        ),
+        body: const ListConversations(),
 
 
     );

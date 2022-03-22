@@ -18,6 +18,7 @@ List user = [
   User('Ali', 'Hello', '12:00pm', 'AL'),
   User('Akram', 'Hello', '12:00pm', 'AK'),
   User('Danish', 'Hello', '12:00pm', 'DA'),
+  User('Danish', 'Hello', '12:00pm', 'DA'),
 
 
 
