@@ -31,6 +31,7 @@ class _ChatHomeState extends State<ChatHome> {
             ),
             title: Text(user[index].name),
             subtitle: Text(user[index].message),
+
             trailing: Text(user[index].time),
           );
         },
