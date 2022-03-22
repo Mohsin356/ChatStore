@@ -20,9 +20,28 @@ class _ChatHomeState extends State<ChatHome> {
             color: Colors.white,
           ),
         ),
-        body: ListView.separated(
-            itemCount: user.length,
-            itemBuilder: (context, index) {
+        body: Container(
+          padding: const EdgeInsets.only(top: 10),
+          child: const ListConversations(),
+        ),
+
+
+    );
+  }
+  }
+  class ListConversations extends StatefulWidget {
+    const ListConversations({Key? key}) : super(key: key);
+
+    @override
+    State<ListConversations> createState() => _ListConversationsState();
+  }
+
+  class _ListConversationsState extends State<ListConversations> {
+    @override
+    Widget build(BuildContext context) {
+      return ListView.separated(
+        itemCount: user.length,
+        itemBuilder: (context, index) {
           return ListTile(
             leading: CircleAvatar(
               backgroundColor: Colors.green,
@@ -35,25 +54,11 @@ class _ChatHomeState extends State<ChatHome> {
             trailing: Text(user[index].time),
           );
         },
-          separatorBuilder: (BuildContext context, int index) => const Divider(),
+        separatorBuilder: (BuildContext context, int index) => const Divider(),
 
-    )
-
-    // Row(
-    //   crossAxisAlignment: CrossAxisAlignment.start,
-    //   mainAxisAlignment: MainAxisAlignment.start,
-    //   children: [
-    //     CircleAvatar(
-    //       backgroundColor: Colors.brown.shade800,
-    //       radius: 25.0,
-    //       child: const Text('AH'),
-    //     ),
-    //     const SizedBox(height: 10,),
-    //   ],
-    // ),
-
-    );
+      );
+    }
   }
-  }
+
 
 
