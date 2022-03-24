@@ -12,6 +12,7 @@ final String letter;
 
 class _ConversationScreenState extends State<ConversationScreen> {
   TextEditingController message = TextEditingController();
+  ScrollController scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,29 +83,33 @@ class _ConversationScreenState extends State<ConversationScreen> {
       ),
       body: Stack(
         children:  [
-          ListView.builder(itemCount:messagesList.length ,
-            shrinkWrap: true,
-            padding: const EdgeInsets.only(top: 10,bottom: 10),
-            itemBuilder: (context,index){
-            return Container(
-              padding: const EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 10),
-              child: Align(
-                alignment: (messagesList[index].messageType=="receiver"?Alignment.topLeft:Alignment.topRight),
-                child: Container(
-                  constraints: const BoxConstraints(
-                    minWidth: 50,
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color:(messagesList[index].messageType=="receiver"?Colors.lightBlue[400]:Colors.green),
-                  ),
-                  padding: const EdgeInsets.all(10),
-                  child: Text(messagesList[index].messageBody,style: const TextStyle(fontSize: 15,color: Colors.white,)),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 60),
+            child: ListView.builder(itemCount:messagesList.length ,
+              shrinkWrap: true,
+                controller: scrollController,
+              padding: const EdgeInsets.only(top: 10,bottom: 10),
+              itemBuilder: (context,index){
+              return Container(
+                padding: const EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 10),
+                child: Align(
+                  alignment: (messagesList[index].messageType=="receiver"?Alignment.topLeft:Alignment.topRight),
+                  child: Container(
+                    constraints: const BoxConstraints(
+                      minWidth: 50,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color:(messagesList[index].messageType=="receiver"?Colors.lightBlue[400]:Colors.green),
+                    ),
+                    padding: const EdgeInsets.all(10),
+                    child: Text(messagesList[index].messageBody,style: const TextStyle(fontSize: 15,color: Colors.white,)),
 
-                ),
-              )
-            );
-            },
+                  ),
+                )
+              );
+              },
+            ),
           ),
            Align(
             alignment: Alignment.bottomLeft,
@@ -128,17 +133,24 @@ class _ConversationScreenState extends State<ConversationScreen> {
                      ),
                    ),
                   const SizedBox(width: 15,),
-                    const  Expanded(
+                      Expanded(
                        child:TextField(
+                         controller: message,
                          cursorColor: Colors.green,
-                         decoration: InputDecoration(
+                         decoration: const InputDecoration(
                            hintText: "Write message here....",
                            border: InputBorder.none,
                          ),
 
                        )),
                    const SizedBox(width: 15,),
-                   FloatingActionButton(onPressed: (){},
+                   FloatingActionButton(onPressed: (){
+                     setState(() {
+                       messagesList.add(Message(message.text.trim(), "sender"),);
+                       message.clear();
+                       scrollController.jumpTo(scrollController.position.maxScrollExtent+60);
+                     });
+                   },
                    child: const Icon(Icons.send,color: Colors.white,size: 18,),
                    backgroundColor: Colors.green,
                    elevation: 0,),

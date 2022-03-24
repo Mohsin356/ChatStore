@@ -20,5 +20,6 @@ List messagesList=[
   Message("Fine too", "sender"),
   Message("Nice to meet you too. Will text you soon. Busy for this moment", "receiver"),
   Message("Nice to meet you", "receiver"),
+  Message("Nice to meet you too", "sender"),
 
 ];
