@@ -52,7 +52,8 @@ class _ChatHomeState extends State<ChatHome> {
             trailing: Text(user[index].time),
             onTap: (){
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context)=>const ConversationScreen()));
+                  MaterialPageRoute(builder: (context)=> ConversationScreen(name: user[index].name,
+                      letter:user[index].letter)));
             },
           );
         },
