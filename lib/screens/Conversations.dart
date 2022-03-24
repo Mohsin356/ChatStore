@@ -103,6 +103,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                   const SizedBox(width: 15,),
                     const  Expanded(
                        child:TextField(
+                         cursorColor: Colors.green,
                          decoration: InputDecoration(
                            hintText: "Write message here....",
                            border: InputBorder.none,
