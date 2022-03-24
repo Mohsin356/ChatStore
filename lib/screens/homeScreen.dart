@@ -19,7 +19,6 @@ class _HomePageState extends State<HomePage>
       child: Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        toolbarHeight: 80,
         automaticallyImplyLeading: false,
         title: const Text("ChatStore",style: TextStyle(fontSize: 28,fontWeight: FontWeight.bold),),
         backgroundColor: Colors.green,

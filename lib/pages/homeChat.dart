@@ -1,4 +1,5 @@
 import 'package:chat_store/model/users.dart';
+import 'package:chat_store/screens/Conversations.dart';
 import 'package:flutter/material.dart';
 
 class ChatHome extends StatefulWidget {
@@ -49,6 +50,10 @@ class _ChatHomeState extends State<ChatHome> {
             subtitle: Text(user[index].message),
 
             trailing: Text(user[index].time),
+            onTap: (){
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context)=>const ConversationScreen()));
+            },
           );
         },
         separatorBuilder: (BuildContext context, int index) => const Divider(),
