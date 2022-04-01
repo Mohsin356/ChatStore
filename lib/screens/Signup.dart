@@ -63,10 +63,7 @@ class _SignupState extends State<Signup> {
                   }
 
               ),
-              // const SizedBox(
-              //   height: 12,
-              // ),
-              // buildEmailField(),
+
               CustomTextField(
                 title: 'Email',
                 inputType: TextInputType.emailAddress,
